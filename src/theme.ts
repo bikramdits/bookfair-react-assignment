@@ -1,9 +1,9 @@
-import ITheme from 'models/interfaces/itheme'
+import colors from "assets/scss/color-variables";
+import ITheme from "models/interfaces/itheme";
 
 export const currentTheme: ITheme = {
   token: {
-    colorPrimary: "#ff004200",
-    colorText: "#333",
+    colorPrimary: colors.primaryColor,
+    colorText: colors.darkGrayColor,
   },
 };
-

@@ -9,12 +9,14 @@ import Notify from "utils/notify";
 import ChangeLanguage from "utils/change-language";
 import BasicButton from "components/elements/button";
 import ProductList from "components/products/product-list";
+import ShopBanner from "components/shop-banner";
 
 const Home = ({ login: { isLoggedIn, setIsLoggedIn } }: any) => {
   const { t } = useTranslation();
 
   return (
     <>
+      <ShopBanner />
       <ProductList
         title="Latest Books"
         products={[

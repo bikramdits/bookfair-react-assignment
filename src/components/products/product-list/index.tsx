@@ -11,10 +11,11 @@ interface SaleProductListProps {
   products: IBook[];
 }
 
-const MianContainer = styled.div`
-  max-width: 1199px;
+export const  MainContainer = styled.div`
+  max-width: 1140px;
   width:100%;
   margin: 0 auto;
+  padding: 0 15px;
 
  `;
 
@@ -23,7 +24,7 @@ const ProductList: React.FC<SaleProductListProps> = ({ title="Books", products }
   return (
     <>
    
-    <MianContainer>
+    <MainContainer>
      <Typography.Title
         level={2}
         style={{ margin: 0, color: "#333", marginTop: "6em" }}
@@ -36,7 +37,7 @@ const ProductList: React.FC<SaleProductListProps> = ({ title="Books", products }
         return <ProductItem product={product} key={product.id} />;
       })}
       </Row>
-    </MianContainer>
+    </MainContainer>
     </>
   );
 };

@@ -5,6 +5,7 @@ import App from "App";
 import "assets/translation/i18n";
 import client from "services/graphql/client";
 
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

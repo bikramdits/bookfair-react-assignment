@@ -1,31 +1,81 @@
 import React, { useState, useEffect } from "react";
-import { HomeOutlined, GithubOutlined, SmileOutlined, DashboardOutlined } from "@ant-design/icons";
-import type { MenuProps } from "antd";
+import {  ShoppingCartOutlined, LoginOutlined, UserOutlined } from "@ant-design/icons";
+import { Badge, Col, MenuProps, Row } from "antd";
 import { Menu } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
+import styled from "styled-components";
+import { MainContainer } from "components/products/product-list";
+import colors from "assets/scss/color-variables";
 
 const items: MenuProps["items"] = [
   {
     label: "BookFair",
     key: "home",
-    // icon: <HomeOutlined />,
   },
   {
-    label: "About(404)",
+    label: "Shops",
     key: "about",
-    icon: <SmileOutlined />,
   },
   {
-    label: "Dashboard",
-    key: "dashboard",
-    icon: <DashboardOutlined />,
+    key: "cart",
+    icon: <Badge count={0} showZero><ShoppingCartOutlined /></Badge>,
   },
   {
-    label: "Github",
-    key: "github",
-    icon: <GithubOutlined />,
+    key: "login",
+    icon: <UserOutlined />,
+    children: [
+      {
+        label: 'Login',
+        key: 'setting:1',
+        icon: <LoginOutlined />,
+      },
+      // {
+      //   label: 'Option 2',
+      //   key: 'setting:2',
+      // },
+    ],
   }
 ];
+
+const Navigation = styled.div `
+    border-bottom: 1px solid ${colors.tertiaryColor};
+    ul{
+            border:none;
+            display: flex;
+            justify-content: flex-end;
+      li{
+        text-align:center;
+        padding: 10px 0;
+        .ant-badge-count {
+           display: flex;
+           align-items: center;
+           justify-content: center;           
+            font-size: 11px;
+        }
+        span{
+           &.anticon {
+              min-width: 20px !important;
+              font-size: 20px !important;
+            }
+           &.ant-menu-title-content:empty {
+             display: none;
+            }
+        }
+      }
+    }
+      
+`;
+const Logo = styled.div `
+  font-size: 30px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: ${colors.primaryColor} !important;
+
+`;
+
+
 
 const App: React.FC = () => {
   const [current, setCurrent] = useState("home");
@@ -69,12 +119,24 @@ const App: React.FC = () => {
   };
 
   return (
-    <Menu
-      onClick={onClick}
-      selectedKeys={[current]}
-      mode="horizontal"
-      items={items}
-    />
+    <Navigation>
+      <MainContainer>        
+
+        <Row>
+          <Col sm={24} md={6}>
+            <Logo>Bookfair</Logo>
+          </Col>
+          <Col sm={24} md={18}>
+              <Menu
+            onClick={onClick}
+            selectedKeys={[current]}
+            mode="horizontal"
+            items={items}
+          />   
+          </Col>
+        </Row>  
+      </MainContainer>
+    </Navigation>
   );
 };
 
