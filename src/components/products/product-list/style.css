@@ -1,0 +1,10 @@
+.product-list .ant-card-cover {
+    min-height: 282px;
+    background-color: #ededed;
+  }
+  @media (max-width: 1200px) {
+    .product-list .ant-card-cover {
+      min-height: auto;
+    }
+  }
+  
